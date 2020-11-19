@@ -1,0 +1,38 @@
+export default [
+  {
+    id: 'el1',
+    name: 'Гитара 1',
+    img: 'fender.jpg',
+    price: '25000',
+  },
+  {
+    id: 'el2',
+    name: 'Гитара 2',
+    img: 'fender.jpg',
+    price: '15000',
+  },
+  {
+    id: 'el3',
+    name: 'Гитара 3',
+    img: 'fender.jpg',
+    price: '8300',
+  },
+  {
+    id: 'el4',
+    name: 'Гитара 4',
+    img: 'fender.jpg',
+    price: '25000',
+  },
+  {
+    id: 'el5',
+    name: 'Гитара 5',
+    img: 'fender.jpg',
+    price: '12500',
+  },
+  {
+    id: 'el6',
+    name: 'Гитара 6',
+    img: 'fender.jpg',
+    price: '10000',
+  },
+];

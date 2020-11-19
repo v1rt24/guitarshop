@@ -1,0 +1,11 @@
+@import "reset.css";
+@import "variables.css";
+@import "../components/header/Header.css";
+@import "../components/products/Products.css";
+@import "../components/shopping/Shopping.css";
+
+body {
+    font-family: sans-serif;
+    line-height: 1.7;
+    background-color: var(--color-light);
+}

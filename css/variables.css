@@ -1,0 +1,13 @@
+:root {
+    --color-light: #f8f9fa;
+    --color-white: white;
+    --color-btn: 153, 196, 255;
+    --color-unaccent: #808080;
+
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 30px;
+
+    --box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+    --border-radius: 3px
+}
