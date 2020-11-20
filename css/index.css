@@ -3,6 +3,8 @@
 @import "../components/header/Header.css";
 @import "../components/products/Products.css";
 @import "../components/shopping/Shopping.css";
+@import "../components/spinner/Spinner.css";
+@import "../components/error/Error.css";
 
 * {
     box-sizing: border-box;
@@ -12,4 +14,18 @@ body {
     font-family: sans-serif;
     line-height: 1.7;
     background-color: var(--color-light);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ecedee
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #6dc0c8;
 }

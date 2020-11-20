@@ -1,0 +1,31 @@
+.cart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 97%;
+    height: 97vh;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-large);
+}
+
+.cart__close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: var(--color-unaccent);
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.cart__name {
+    font-weight: bold;
+    padding: var(--spacing-medium);
+}
+
+.cart__price {
+    color: var(--color-unaccent);
+    padding: var(--spacing-medium);
+}

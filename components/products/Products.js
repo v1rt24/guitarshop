@@ -1,6 +1,12 @@
-import CATALOG from '../../constants/catalog.js';
 import Header from '../header/Header.js';
-import { priceFormat, getProducts, putProducts } from '../../utils/utils.js';
+import Spinner from '../spinner/Spinner.js';
+import Error from '../error/Error.js';
+import {
+  CATALOG,
+  priceFormat,
+  getProducts,
+  putProducts,
+} from '../../utils/utils.js';
 
 class Products {
   #$products = document.querySelector('#products');
@@ -13,42 +19,53 @@ class Products {
     this.#addToCart();
   }
 
-  #render () {
+  async #render () {
     this.#$products.textContent = '';
 
     const productsStore = getProducts('products');
 
-    const html = CATALOG.map(({id, name, img, price}) => {
-      let classActive = '';
-      let activeText = '';
+    try {
+      await CATALOG(data => {
+        const html = data.map(({id, name, img, price}) => {
+          let classActive = '';
+          let activeText = '';
 
-      if (productsStore.includes(id)) {
-        classActive = ' ' + this.#classNameActive;
-        activeText = this.#textActiveBtn;
-      }
-      else {
-        activeText = this.#textNoActiveBtn;
-      }
+          if (productsStore.includes(id)) {
+            classActive = ' ' + this.#classNameActive;
+            activeText = this.#textActiveBtn;
+          }
+          else {
+            activeText = this.#textNoActiveBtn;
+          }
 
-      return `
-        <li class="products__elements">
-            <span class="products__name">${name}</span>
-            <img src="images/catalog/${img}" alt="${name}" class="products__img">
-            <span class="products__price">⚡ ${priceFormat(price)}</span>
-            <button
-            class="products__btn${classActive}"
-            data-btn="button"
-            data-id="${id}"
-            >
-                ${activeText}
-            </button>
-        </li>
+          return `
+            <li class="products__elements">
+                <span class="products__name">${name}</span>
+                <img src="images/catalog/${img}" alt="${name}" class="products__img">
+                <span class="products__price">⚡ ${priceFormat(price)}</span>
+                <button
+                class="products__btn${classActive}"
+                data-btn="button"
+                data-id="${id}"
+                >
+                    ${activeText}
+                </button>
+            </li>
       `;
-    }).join('');
+        }).join('');
 
-    this.#$products.insertAdjacentHTML('beforeend', `
-        <ul class="products">${html}</ul>
-    `);
+        this.#$products.insertAdjacentHTML('beforeend', `
+            <ul class="products">${html}</ul>
+        `);
+
+        Spinner.closeSpinner();
+      });
+    }
+    catch (error) {
+      console.error(error);
+      Spinner.closeSpinner();
+      Error.render();
+    }
   }
 
   #addToCart () {

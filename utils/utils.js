@@ -1,3 +1,21 @@
+export const CATALOG = async callback => {
+  try {
+    const res = await fetch('server/catalog.json');
+
+    if (!res.ok) {
+      await Promise.reject({
+        status: res.status,
+        statusText: `${res.statusText}: ${res.url}`,
+      });
+    }
+
+    callback(await res.json());
+  }
+  catch (error) {
+    throw error;
+  }
+};
+
 export const priceFormat = price => {
   return new Intl.NumberFormat('ru-RU', {
     currency: 'rub',
