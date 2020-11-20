@@ -1,9 +1,9 @@
 import CATALOG from '../../constants/catalog.js';
+import Header from '../header/Header.js';
 import { priceFormat, getProducts, putProducts } from '../../utils/utils.js';
 
-const $products = document.querySelector('#products');
-
 class Products {
+  #$products = document.querySelector('#products');
   #classNameActive = 'products__btn_active';
   #textActiveBtn = 'Убрать из корзины';
   #textNoActiveBtn = 'В корзину';
@@ -14,7 +14,7 @@ class Products {
   }
 
   #render () {
-    $products.textContent = '';
+    this.#$products.textContent = '';
 
     const productsStore = getProducts('products');
 
@@ -46,20 +46,20 @@ class Products {
       `;
     }).join('');
 
-    document.querySelector('#products').insertAdjacentHTML('beforeend', `
+    this.#$products.insertAdjacentHTML('beforeend', `
         <ul class="products">${html}</ul>
     `);
   }
 
   #addToCart () {
-    $products.addEventListener('click', evt => {
+    this.#$products.addEventListener('click', evt => {
       const btn = evt.target;
 
       if (btn.dataset.btn) {
         const id = btn.dataset.id;
-        const data = putProducts('products', id);
+        const {activeClass, products} = putProducts('products', id);
 
-        if (data.activeClass) {
+        if (activeClass) {
           btn.classList.add(this.#classNameActive);
           btn.textContent = this.#textActiveBtn;
         }
@@ -67,6 +67,8 @@ class Products {
           btn.classList.remove(this.#classNameActive);
           btn.textContent = this.#textNoActiveBtn;
         }
+
+        Header.render(products.length);
       }
     });
   }

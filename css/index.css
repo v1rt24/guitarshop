@@ -4,6 +4,10 @@
 @import "../components/products/Products.css";
 @import "../components/shopping/Shopping.css";
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: sans-serif;
     line-height: 1.7;

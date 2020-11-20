@@ -1,0 +1,17 @@
+.header {
+    background-color: var(--color-medium);
+}
+
+.header__wrapper {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--spacing-small);
+    margin: 0 auto;
+}
+
+.header__counter {
+    font-weight: bold;
+    cursor: pointer;
+}
